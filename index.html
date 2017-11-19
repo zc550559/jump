@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello Cocos2d-JS</title>
+</head>
+<body>   
+    <canvas id="gameCanvas" width="320" height="400"></canvas>
+    <script type="text/javascript" src="cocos2d-js-v3.13.js" charset="UTF-8"></script>
+    <script type="text/javascript">
+          var g_resources = [];
+          window.onload = function(){
+              cc.game.onStart = function(){
+                cc.view.adjustViewPort(true);
+                cc.view.setDesignResolutionSize(320, 400, cc.ResolutionPolicy.SHOW_ALL);
+                cc.view.resizeWithBrowserSize(true);
+                cc.SPRITE_DEBUG_DRAW = 0;
+                cc.LoaderScene.preload(g_resources, function () {
+                    cc.director.runScene(new GameScene());
+                }, this);
+              };
+              cc.game.run();
+          };
+    </script>
+</body>
+</html>
